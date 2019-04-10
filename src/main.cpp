@@ -1882,18 +1882,16 @@ int64_t GetBlockValue(int nHeight)
 {
     int64_t nSubsidy = 0;
 
-    if (nHeight == 0) {
-        nSubsidy = 145000000 * COIN;
-    } else if (nHeight < Params().LAST_POW_BLOCK()) {
+    if (nHeight == 0) 
+	nSubsidy = 145000000 * COIN;
+    else if (nHeight < Params().LAST_POW_BLOCK()) {
          nSubsidy = 0;
-    } else if (nHeight < Params().NewRewardStructure_Height()) {
+    else
          nSubsidy = 30 * COIN;
-    } else
-         nSubsidy = 25 * COIN;
 
     return nSubsidy;
 }
-
+/*
 CAmount GetSeeSaw(const CAmount& blockValue, int nMasternodeCount, int nHeight)
 {
     //if a mn count is inserted into the function we are looking for a specific result for a masternode count
@@ -2094,11 +2092,12 @@ CAmount GetSeeSaw(const CAmount& blockValue, int nMasternodeCount, int nHeight)
     }
     return ret;
 }
+*/
 
 int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCount, bool isZPIVStake)
 {
-    int64_t ret = 0;
-
+    int64_t ret = 11.5 * COIN; //46% for Grow Masternodes
+/*
     if (nHeight >= Params().NewRewardStructure_Height() && nHeight < Params().Zerocoin_StartHeight()) {
         return GetSeeSaw(blockValue, nMasternodeCount, nHeight);
     } else {
@@ -2106,6 +2105,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
         if (isZPIVStake)
             ret = 10 * COIN;
     }
+*/
 
     return ret;
 }
